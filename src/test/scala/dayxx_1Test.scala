@@ -4,7 +4,7 @@ import dayxx_1.{calculate}
 class dayxx_1Test  extends FunSuite {
 
   test("Determine ...") {
-    assert(calculate("(())") == 0)
+    assert(calculate(Array("")) == 0)
   }
 
 }

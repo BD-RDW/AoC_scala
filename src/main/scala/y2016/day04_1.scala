@@ -1,7 +1,5 @@
 package y2016
 
-import scala.io.Source
-
 object day04_1 {
 
   def main(args: Array[String]): Unit = {

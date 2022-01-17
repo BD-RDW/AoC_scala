@@ -1,13 +1,16 @@
 object dayxx_1 {
 
-  // Result ?????
-  val input = ""
-
   def main(args: Array[String]): Unit = {
-    println(f"input ${input.substring(0,20)}%s results in ${calculate(input)}%d")
-  }
+    // Result ?????
+    val input = readInputStrings("dayxx_input.txt")
 
-  def calculate(str: String): Int = {
+    println(f"input contains ${input.length}%d lines, resulting in ${calculate(input)}%d")
+  }
+  def readInputStrings(filename: String):Array[String] = {
+    val source = scala.io.Source.fromResource(filename)
+    try source.getLines().toArray finally source.close()
+  }
+  def calculate(str: Array[String]): Int = {
     -1
   }
 

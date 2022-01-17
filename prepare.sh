@@ -6,8 +6,9 @@ read -p "Enter day number (I.e.: 02) " day
 workDir=src/main/scala
 echo package ${year} > ${workDir}/${year}/day${day}_1.scala
 echo >> ${workDir}/${year}/day${day}_1.scala
-sed "s/xx/${day}/" ${workDir}/dayxx_1.scala >> ${workDir}/${year}/day${day}_1.scala
+sed "s/dayxx_input/${year}\/day${day}_input/; s/xx/${day}/" ${workDir}/dayxx_1.scala >> ${workDir}/${year}/day${day}_1.scala
 #cp src/main/scala/dayxx_1.scala src/main/scala/$1/day$2_1.scala
+echo > ${workDir}/${year}/day${day}_input.txt
 
 workDir=src/test/scala
 echo package ${year} > ${workDir}/${year}/day${day}_1Test.scala
