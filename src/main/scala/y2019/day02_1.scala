@@ -1,5 +1,7 @@
 package y2019
 
+import y2019.computer.IntcodeComputer
+
 import scala.util.Sorting
 
 object day02_1 {
@@ -13,27 +15,8 @@ object day02_1 {
     println(f"The program input of ${input.length}%d instructions results in ${execute(input)}%d")
   }
 
-  def processInstructionAt(tpl: (Int, Array[Int])): (Int, Array[Int]) = {
-    var result:Int = 0
-    val(ptr, instr) = tpl
-    instr(ptr) match {
-      case 1 => result = instr(instr(ptr + 1)) + instr(instr(ptr + 2))
-      case 2 => result = instr(instr(ptr + 1)) * instr(instr(ptr + 2))
-    }
-    println ("Ptr: " + ptr + "; Result " + result + " is place at " + instr(ptr + 3))
-    instr(instr(ptr + 3)) = result
-    (ptr + 4, instr)
-  }
-
   def execute(prog: Array[Int]): Int = {
-    var instrPtr = 0
-    var code: Array[Int] = prog
-    while (code(instrPtr) != 99) {
-      val(ptr, instr) = processInstructionAt((instrPtr, code))
-      instrPtr = ptr
-      code = instr
-    }
-    code(0)
+    new IntcodeComputer().execute(prog)
   }
 
 }

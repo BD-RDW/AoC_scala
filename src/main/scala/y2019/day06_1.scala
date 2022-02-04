@@ -39,7 +39,3 @@ object day06_1 {
   }
 
 }
-//class SpaceBody {
-//  val name: String
-//
-//}

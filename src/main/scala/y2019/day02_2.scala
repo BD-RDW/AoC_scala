@@ -1,5 +1,7 @@
 package y2019
 
+import y2019.computer.IntcodeComputer
+
 object day02_2 {
 
   // Result 9820
@@ -14,28 +16,10 @@ object day02_2 {
     }
   }
 
-  def processInstructionAt(tpl: (Int, Array[Int])): (Int, Array[Int]) = {
-    var result:Int = 0
-    val(ptr, instr) = tpl
-    instr(ptr) match {
-      case 1 => result = instr(instr(ptr + 1)) + instr(instr(ptr + 2))
-      case 2 => result = instr(instr(ptr + 1)) * instr(instr(ptr + 2))
-    }
-    instr(instr(ptr + 3)) = result
-    (ptr + 4, instr)
-  }
-
   def execute(prog: Array[Int],pos1Val: Int, pos2Val: Int): Int = {
     prog(1) = pos1Val
     prog(2) = pos2Val
-    var instrPtr = 0
-    var code: Array[Int] = prog
-    while (code(instrPtr) != 99) {
-      val(ptr, instr) = processInstructionAt((instrPtr, code))
-      instrPtr = ptr
-      code = instr
-    }
-    code(0)
+    new IntcodeComputer().execute(prog)
   }
 
 }
